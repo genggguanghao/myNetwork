@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+
 const login =()=>import("../page/index/loginStart.vue") //异步加载
 
 const home =()=>import(/* webpackChunkName: 'home' */ "../page/home/home.vue") 
@@ -10,18 +9,7 @@ const js_style =()=>import("../page/learn/js_style/js_style.vue") //异步加载
 const nginx =()=>import("../page/learn/nginx/nginx.vue") //异步加载
 const http =()=>import("../page/learn/http/http.vue") //异步加载
 
-
-// import login from '../page/index/loginStart.vue'
-// import home from '../page/home/home.vue'
-// import container from '../page/home/container.vue'
-// import cssDoodle from '../page/home/cssDoodle.vue'
-// import articleList from '../page/learn/index/passageList.vue'
-// import js_style from '../page/learn/js_style/js_style.vue'
-// import nginx from '../page/learn/nginx/nginx.vue'
-// import http from '../page/learn/http/http.vue'
-
-
-Vue.use(Router);
+//Vue.use(Router);
 var routers = [
 	{
 		path: '/',
@@ -58,13 +46,8 @@ var routers = [
 		]
 	}
 ]
-export default new Router({
+export default new VueRouter({
 	routes: routers
 })
-
-// var routeMenuMap={};
-// module.exports={
-// 	routeMenuMap
-// }
 
 export const routeMenuMap = routers;

@@ -50,7 +50,12 @@ let webpackOptions = {
             options: {
             }
           },
-          "css-loader",
+          {
+            loader: 'css-loader',
+            options:{
+                minimize: true //css压缩
+            }
+        },
           'postcss-loader'
         ]
       },
@@ -89,7 +94,9 @@ let webpackOptions = {
     minimizer: [
       new UglifyJsPlugin({
           uglifyOptions: {
-              compress: false
+              compress: {
+                dead_code: true
+              }
           }
       })
   ]

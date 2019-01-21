@@ -4,6 +4,8 @@
     </div>
 </template>
 <script>
+ import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 import README from './nginx.md';
 export default {
     data() {
@@ -16,6 +18,10 @@ export default {
             }
         };
     },
+     components: {
+            mavonEditor
+            // or 'mavon-editor': mavonEditor
+        },
     methods: {
         changeData(value, render) {
             console.log(render);

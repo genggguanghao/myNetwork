@@ -5,10 +5,10 @@ import App from './App.vue';
  import router from './routes';
  import './assets/css/default.css';
  import './assets/css/normalize.css';
-import ElementUI from 'element-ui';
-import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
- import 'element-ui/lib/theme-chalk/index.css';
+ import ElementUI from 'element-ui'; 
+//import mavonEditor from 'mavon-editor' CDN引入
+//import 'mavon-editor/dist/css/index.css'
+// import 'element-ui/lib/theme-chalk/index.css';
 import 'css-doodle';
 // import store from './store';
 // import iView from 'iview';
@@ -17,8 +17,8 @@ import 'css-doodle';
 // import './assets/style/markdown.css';
 // import './assets/style/example.css';
 
-Vue.use(mavonEditor)
- Vue.use(ElementUI);
+ //Vue.use(mavonEditor)
+  Vue.use(ElementUI);
 new Vue({
   el: '#app',
   router,

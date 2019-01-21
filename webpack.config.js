@@ -8,7 +8,8 @@ const webpackMerge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');//打包后通知
 const { resolve } = require("path");
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
 //const htmlAfterPlugin = require("./config/htmlAfterPlugin.js")
 //const CleanWebpackPlugin = require('clean-webpack-plugin')//每次删除上次打包文件
 //const glob =require("glob");
@@ -16,6 +17,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 //需要处理的入口文件  借助插件 gloal
 let webpackOptions = {
     entry:'./src/webapp/main.js',
+    externals : {
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'element-ui': 'ELEMENT'
+    },
    module: {
     rules: [
       {
@@ -80,6 +86,13 @@ let webpackOptions = {
     runtimeChunk: {
       name: "runtime"//把webpack 进行时的文件单分离开来
     },
+    minimizer: [
+      new UglifyJsPlugin({
+          uglifyOptions: {
+              compress: false
+          }
+      })
+  ]
   },
   profile:true,//监控编译的时间以及性能
   resolve: {

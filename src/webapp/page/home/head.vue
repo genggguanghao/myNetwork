@@ -8,7 +8,7 @@
 					<ul>
 						<!-- to后面的路径如果是/开头表示从根路径开始不写的表示从当前路径出发 -->
 						<li><router-link  to="/home">首页</router-link ></li>
-						<li><a href="http://94.191.23.210">个人简历</a></li>
+						<li><a href="http://94.191.23.210:3001">个人简历</a></li>
 						<li><router-link  to="/home/xmind">知识体系图</router-link ></li>
 						<li><router-link  to="/home/learn">学习杂谈</router-link ></li>
 						<li><router-link to="/home/cssDoodle">留言</router-link></li>

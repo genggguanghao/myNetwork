@@ -8,7 +8,6 @@
     "build":"node ./shell/shell_build.js",
     "build.push.server":"node ./shell/shell_build_push.js",
     "start": "pm2 start ecosystem.config.js --env production",
-    "uat": "pm2 start ecosystem.config.js --env uat",
     "docs": "jsdoc ./src/nodeuii/**/*.js -d ./doc/jsdocs"
   },
   "author": "",

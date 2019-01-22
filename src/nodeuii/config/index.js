@@ -6,9 +6,10 @@ let config ={
     viewsDir:join(__dirname,"..",""),
     getDadePath:"http://192.168.12.1"//请求外部ip
 }
+console.log(process.env.NODE_ENV+"++++++++++++++++++++++++++env")
 if(process.env.NODE_ENV=="development"){
     const localConfig ={
-        port:Math.ceil(Math.random()*10000)
+        port:3000
     }
     config=lodash.extend(config,localConfig);
     console.log("+++++++"+process.env.NODE_ENV)

@@ -1,162 +1,21 @@
-# koa-views
 
-[![Build status][travis-image]][travis-url]
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][npm-downloads-image]][npm-url]
-[![Dependency Status][david-image]][david-url]
-[![License][license-image]][license-url]
 
-Template rendering middleware for `koa@2`.
+## 简介
 
-## Installation
+这个项目是为帮助自己实践工作中想要实现的想法，纯属个人爱好，里面很多东西也是站在巨人的肩膀上造轮子，有写的不对的地方欢迎指正。
 
-```sh
-npm install koa-views
-```
+> 本网站的具体的地址http://www.gengguanghao.com.
+> 本网站后台服务是node，前端矿框架vue，本来是简历+网站两个单独的SPA项目，现在要合并成MPA项目。
 
-## Templating engines
 
-`koa-views` is using [consolidate](https://github.com/tj/consolidate.js) under the hood.
+## 网站正在持续建设中，功能比较简陋，敬请谅解
 
-[List of supported engines](https://github.com/tj/consolidate.js#supported-template-engines)
+以下是涉及到网站的框架。
 
-**NOTE**: you must still install the engines you wish to use, add them to your package.json dependencies.
-
-## Example
-
-```js
-var views = require('koa-views');
-
-// Must be used before any router is used
-app.use(views(__dirname + '/views', {
-  map: {
-    html: 'underscore'
-  }
-}));
-
-app.use(async function (ctx) {
-  ctx.state = {
-    session: this.session,
-    title: 'app'
-  };
-
-  await ctx.render('user', {
-    user: 'John'
-  });
-});
-```
-
-For more examples you can take a look at the [tests](./test/index.js).
-
-## Simple middleware
-
-If you need to simply render pages with locals, you can install `koa-views-render`:
-
-```sh
-npm install koa-views-render
-```
-
-Then simply use it on your routes and its arguments will be passed to `ctx.render`.
-
-```js
-var render = require('koa-views-render');
-
-// ...
-
-app.use(render('home', { title : 'Home Page' }));
-```
-
-## API
-
-#### `views(root, opts)`
-
-* `root`: Where your views are located. Must be an absolute path. All rendered views are relative to this path
-* `opts` (optional)
-* `opts.extension`: Default extension for your views
-
-Instead of providing the full file extension you can omit it.
-```js
-app.use(async function (ctx) {
-  await ctx.render('user.pug')
-})
-```
-
-vs.
-
-```js
-app.use(views(__dirname, { extension: 'pug' }))
-
-app.use(async function (ctx) {
-  await ctx.render('user')
-})
-```
-
-* `opts.map`: Map a file extension to an engine
-
-In this example, each file ending with `.html` will get rendered using the `nunjucks` templating engine.
-```js
-app.use(views(__dirname, { map: {html: 'nunjucks' }}))
-
-// render `user.html` with nunjucks
-app.use(async function (ctx) {
-  await ctx.render('user.html')
-})
-```
-
-* `opts.engineSource`: replace consolidate as default engine source
-
-If you’re not happy with consolidate or want more control over the engines, you can override it with this options. `engineSource` should
-be an object that maps an extension to a function that receives a path and options and returns a promise. In this example templates with the `foo` extension will always return `bar`.
-
-```js
-app.use(views(__dirname, { engineSource: {foo: () => Promise.resolve('bar')}}))
-
-app.use(async function (ctx) {
-  await ctx.render('index.foo')
-})
-```
-
-* `opts.options`: These options will get passed to the view engine. This is the time to add `partials` and `helpers` etc.
-
-```js
-const app = new Koa()
-  .use(views(__dirname, {
-    map: { hbs: 'handlebars' },
-    options: {
-      helpers: {
-        uppercase: (str) => str.toUpperCase()
-      },
-
-      partials: {
-        subTitle: './my-partial' // requires ./my-partial.hbs
-      }
-    }
-  }))
-  .use(function (ctx) {
-    ctx.state = { title: 'my title', author: 'queckezz' }
-    return ctx.render('./my-view.hbs')
-  })
-```
-
-## Debug
-
-Set the `DEBUG` environment variable to `koa-views` when starting your server.
-
-```bash
-$ DEBUG=koa-views
-```
-
-## License
-
-[MIT](./license)
-
-[travis-image]: https://img.shields.io/travis/queckezz/koa-views.svg?style=flat-square
-[travis-url]: https://travis-ci.org/queckezz/koa-views
-[npm-image]: https://img.shields.io/npm/v/koa-views.svg?style=flat-square
-[npm-downloads-image]: https://img.shields.io/npm/dm/koa-views.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/koa-views
-[david-image]: http://img.shields.io/david/queckezz/koa-views.svg?style=flat-square
-[david-url]: https://david-dm.org/queckezz/koa-views
-[license-image]: http://img.shields.io/npm/l/koa-views.svg?style=flat-square
-[license-url]: ./license
+- 前端采用尤大神的渐进式前端vue框架带上全家桶vue-router以及现在最火的markdown插件mavon-editor，样式采用elementUi的现成的样式。
+- 后端采用node服务+koa2搭建的简易服务器，目前的controller跟model采用的手写引入的方式，以后会采用awilise IOC的控制反转来实现model的依赖注入，提高自动化。
+- 打包方面采用webpack+gulp的构建工具，gulp打包后台代码，webpack打包前台代码。打包分为dev环境和pro两个环境。
+- 前端自动化方面采用 shelljs+ssh+pm2免密登陆实现一键打包自动上传服务器替换旧包，重新启动pm2。服务器监控方面采用pm2-web实现网站的实时监控
+- 站内所写的博客都是跟本网站建设相关的功能，文笔跟深度可能不够，希望大家见谅，不明白可以留言
+---
 

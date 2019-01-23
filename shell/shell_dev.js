@@ -11,10 +11,6 @@ if (shell.exec('webpack --mode development').code !== 0) {
   shell.exit(1);
 }
 //打包完成启动本地服务
-// shell.exec('cross-env NODE_ENV=development node ./dist/app.js');
+ shell.exec('cross-env NODE_ENV=development node ./dist/app.js');
 
 
-//打完包上送至服务器
-shell.exec('scp -r ./dist  root@94.191.23.210:/home')
-//打完包登陆服务器激活服务器脚本
- shell.exec('ssh  root@94.191.23.210  node /home/fqy/shell_dev.js');

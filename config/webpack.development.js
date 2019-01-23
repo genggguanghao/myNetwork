@@ -14,16 +14,6 @@ module.exports ={
              }
 
         ]),
-    //     new CopyWebpackPlugin([
-    //         {
-    //             from:join(__dirname,"../"+"/src/webapp/components"),
-    //             to:"../components"
-    //         }
-
-    //    ],{
-    //         copyUnmodified:true,//只打包copy内容
-    //         ignore:["*.js","*.css",".DS_Store"]
-        
-    //    })
+    
       ]
 }

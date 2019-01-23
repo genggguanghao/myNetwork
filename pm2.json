@@ -4,8 +4,8 @@
         "name": "FQY", 
         "script": "app.js",
         "log_data_format": "YYYY-MM-DD HH:MM Z",
-        "error_file" : "log/test-err.log",
-        "out_file": "log/test-out.log",
+        "error_file" : "/log/test-err.log",
+        "out_file": "/log/test-out.log",
         "watch": true,
         "instances" : "max",
         "exec_mode" : "cluster" 

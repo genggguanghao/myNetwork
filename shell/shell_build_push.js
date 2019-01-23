@@ -13,7 +13,6 @@ if (shell.exec('webpack --mode production').code !== 0) {
   shell.exit(1);
 }
 //打完包上送至服务器
-shell.exec('scp dist -t -t root@94.191.23.210:/root')
-
+shell.exec('scp -r ./dist  root@94.191.23.210:/home')
 //打完包登陆服务器激活服务器脚本
-shell.exec('ssh -i ./ssh/253910631_rsa -t -t root@94.191.23.210  node /home/fqy/shell_dev.js');
+ shell.exec('ssh  root@94.191.23.210  node /home/fqy/shell/shell_server.js');

@@ -12,7 +12,6 @@ if(process.env.NODE_ENV=="development"){
         port:3000
     }
     config=lodash.extend(config,localConfig);
-    console.log("+++++++"+process.env.NODE_ENV)
 }
 if(process.env.NODE_ENV=="production"){
     const proConfig ={

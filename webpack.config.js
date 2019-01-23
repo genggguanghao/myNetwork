@@ -9,20 +9,20 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');//打包后通知
 const { resolve } = require("path");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
 //const htmlAfterPlugin = require("./config/htmlAfterPlugin.js")
 //const CleanWebpackPlugin = require('clean-webpack-plugin')//每次删除上次打包文件
 //const glob =require("glob");
 //const files = glob.sync("./src/webapp/views/**/*.entry.js");
 //需要处理的入口文件  借助插件 gloal
 let webpackOptions = {
-    entry:'./src/webapp/main.js',
-    externals : {
-      'vue': 'Vue',
-      'vue-router': 'VueRouter',
-      'element-ui': 'ELEMENT'
-    },
-   module: {
+  entry: './src/webapp/main.js',
+  externals: {
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'element-ui': 'ELEMENT'
+  },
+  mode:  _modeFlage?'production':"development",
+  module: {
     rules: [
       {
         test: /\.vue$/,
@@ -52,10 +52,10 @@ let webpackOptions = {
           },
           {
             loader: 'css-loader',
-            options:{
-                minimize: true //css压缩
+            options: {
+              minimize: true //css压缩
             }
-        },
+          },
           'postcss-loader'
         ]
       },
@@ -66,7 +66,7 @@ let webpackOptions = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name:"img/[name].[ext]"
+              name: "img/[name].[ext]"
             }
           }
         ]
@@ -90,18 +90,9 @@ let webpackOptions = {
     },//把chunk分开
     runtimeChunk: {
       name: "runtime"//把webpack 进行时的文件单分离开来
-    },
-    minimizer: [
-      new UglifyJsPlugin({
-          uglifyOptions: {
-              compress: {
-                dead_code: true
-              }
-          }
-      })
-  ]
+    }
   },
-  profile:true,//监控编译的时间以及性能
+  profile: true,//监控编译的时间以及性能
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -121,8 +112,8 @@ let webpackOptions = {
       template: `index.html`,
       // chunks:["runtime",'common',""],//给每个html设置单独一一对应的js 同名的js以及runtime 还有common
       //loading,//把loading引入到这里  可以根据chuank 加载js的加载文件的多少控制loading进度条
-      }),
-      new VueLoaderPlugin(),
+    }),
+    new VueLoaderPlugin(),
     //老袁tips： webpack-build-notifier 打完包以后弹框通知
     new WebpackBuildNotifierPlugin({
       title: "客官，包好了",//设置打包名字

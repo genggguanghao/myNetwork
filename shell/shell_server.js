@@ -12,5 +12,5 @@ console.log("结束copy文件")
 //启动重新启动PM2
  shell.cd('/home/fqy');
  console.log("重启pm2........") 
- shell.exec('npm run server.restart'); //pm2建立全局软连接
+ shell.exec('npm run server.restart'); //pm2要建立全局软连接
  console.log("服务重启完成")

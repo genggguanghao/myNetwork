@@ -15,7 +15,7 @@ if(process.env.NODE_ENV=="development"){
 }
 if(process.env.NODE_ENV=="production"){
     const proConfig ={
-        port:3000
+        port:3030
     }
     config=lodash.extend(config,proConfig);
 }

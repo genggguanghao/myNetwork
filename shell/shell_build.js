@@ -12,3 +12,5 @@ if (shell.exec('webpack --mode production').code !== 0) {
   shell.echo('Error: webpack.pro failed');
   shell.exit(1);
 }
+//打包完成启动本地服务
+shell.exec('cross-env NODE_ENV=production node ./dist/app.js');

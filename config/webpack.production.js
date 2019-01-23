@@ -1,5 +1,6 @@
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");//css压缩
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const {join} =require("path");
 module.exports = {
     output: {
         path:join(__dirname,"../dist/assets"),

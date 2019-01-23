@@ -10,7 +10,7 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');//打包后
 const { resolve } = require("path");
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 //const htmlAfterPlugin = require("./config/htmlAfterPlugin.js")
-//const CleanWebpackPlugin = require('clean-webpack-plugin')//每次删除上次打包文件
+const CleanWebpackPlugin = require('clean-webpack-plugin')//每次删除上次打包文件
 //const glob =require("glob");
 //const files = glob.sync("./src/webapp/views/**/*.entry.js");
 //需要处理的入口文件  借助插件 gloal
@@ -120,7 +120,7 @@ let webpackOptions = {
       logo: resolve("./favicon.png"),//设置弹框图标
       suppressSuccess: true
     }),
-    //new CleanWebpackPlugin(["dist"])
+    new CleanWebpackPlugin(["dist"])
   ]
 }
 //smp.wrap  打包时间的控件要把配置文件包起来 

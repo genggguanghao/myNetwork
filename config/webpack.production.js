@@ -2,10 +2,11 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");//
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     output: {
-        filename: "scripts/[name]-[contenthash:5].bundles.js",////注意：每次编译，代码的hash都是一致的，这会导致当我只改动一个文件时必须全文打包。
+        path:join(__dirname,"../dist/assets"),
+        filename: "js/[name]-[contenthash:5].bundles.js",////注意：每次编译，代码的hash都是一致的，这会导致当我只改动一个文件时必须全文打包。
         //有些公司加chuankhash：5 这种只能用在不引入css的js文件中。当引入css时css也会相应的改变
         //有些公司只是在contenthash：5 可以把公用的所有文件都分离开来编译，一个文件改变不影响其他。前提是所有的输出文件都要加content
-        publicPath: ""//公司的cdn
+        publicPath: "/"//公司的cdn
     },
     performance: {
         hints: "warning", // 枚举

@@ -9,13 +9,13 @@ let config ={
 console.log(process.env.NODE_ENV+"++++++++++++++++++++++++++env")
 if(process.env.NODE_ENV=="development"){
     const localConfig ={
-        port:3000
+        port:3030
     }
     config=lodash.extend(config,localConfig);
 }
 if(process.env.NODE_ENV=="production"){
     const proConfig ={
-        port:3030
+        port:3000
     }
     config=lodash.extend(config,proConfig);
 }

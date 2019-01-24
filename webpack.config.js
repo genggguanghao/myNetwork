@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {join} =require("path");
+const CopyWebpackPlugin = require('copy-webpack-plugin'); //copy不需要编译的东西
 const argv = require('yargs-parser')(process.argv.slice(2));//得到package.json中的mode数据
 console.log("得到的参数时", argv.mode);
 const _mode = argv.mode || "development";//取出来操作是生产环境还是开发环境
@@ -114,6 +116,13 @@ let webpackOptions = {
       //loading,//把loading引入到这里  可以根据chuank 加载js的加载文件的多少控制loading进度条
     }),
     new VueLoaderPlugin(),
+    new CopyWebpackPlugin([
+      {
+          from:join(__dirname,"./"+"logo.ico"),
+          to:""
+      }
+
+ ]),
     //老袁tips： webpack-build-notifier 打完包以后弹框通知
     new WebpackBuildNotifierPlugin({
       title: "客官，包好了",//设置打包名字

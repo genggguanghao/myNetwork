@@ -8,6 +8,7 @@ const articleList =()=>import("../page/learn/index/passageList.vue") //异步加
 const js_style =()=>import("../page/learn/js_style/js_style.vue") //异步加载
 const nginx =()=>import("../page/learn/nginx/nginx.vue") //异步加载
 const http =()=>import("../page/learn/http/http.vue") //异步加载
+const autoDeploy =()=>import("../page/learn/auto_deploy/auto_deploy.vue") //异步加载
 
 //Vue.use(Router);
 var routers = [
@@ -43,6 +44,7 @@ var routers = [
 			{path: 'js_style', name: 'js规范', component: js_style},
 			{path: 'nginx', name: 'nginx反向代理', component: nginx},
 			{path: 'http', name: 'http协议', component: http},
+			{path: 'autoDeploy', name: '远程自动化部署', component: autoDeploy},
 		]
 	}
 ]

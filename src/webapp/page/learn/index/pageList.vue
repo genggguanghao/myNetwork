@@ -29,6 +29,17 @@ export default {
 	data() {
 		return {
 		 articleList:[{
+                "url":"article/autoDeploy",
+                "id":"4",
+                 "tittle":"前端远程自动化部署",
+                "content":"　随着项目的越来越复杂，项目的工程化跟自动化要求也愈加更高，就在闲暇时间里用webpack+shelljs+ssh+pm2 实现本地实现一条命令实现打包+上传服务器+服务器重新启动等一系列自动化部署。由于水平有限，理解有不到位的地方敬请指正。",
+                 "imgUrl":"img/article/auto.png",
+                 "label1":"webpack",
+                 "label2":"pm2",
+                 "readNum":"666",
+                 "diss":"20",
+                 "data":"2018-09-02"
+            },{
                 "url":"article/js_style",
                 "id":"1",
                 "tittle":"你所被老大骂的那些js",

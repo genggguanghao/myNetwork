@@ -1,6 +1,5 @@
 //局部模式
 var shell = require('shelljs');
-
 //删除旧包dist
 console.log("开始删除文件.....")
 shell.rm('-rf', '/home/fqy/dist');

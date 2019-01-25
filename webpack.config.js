@@ -110,8 +110,8 @@ let webpackOptions = {
       chunkFilename: _modeFlage ? "css/[name].[contenthash:5].css" : "css/[name].css"
     }),
     new HtmlWebpackPlugin({//把js css插入到layout的制定位置需要写webpack插件
-      filename: `../index.html`,
-      template: `index.html`,
+      filename: '../index.html',
+      template: 'index.html'
       // chunks:["runtime",'common',""],//给每个html设置单独一一对应的js 同名的js以及runtime 还有common
       //loading,//把loading引入到这里  可以根据chuank 加载js的加载文件的多少控制loading进度条
     }),
@@ -120,7 +120,14 @@ let webpackOptions = {
       {
           from:join(__dirname,"./"+"logo.ico"),
           to:""
-      }
+      },
+      new CopyWebpackPlugin([
+        {
+            from:join(__dirname,"./"+"/src/webapp/assets/img/article"),
+            to:"img"
+        }
+
+   ]),
 
  ]),
     //老袁tips： webpack-build-notifier 打完包以后弹框通知
